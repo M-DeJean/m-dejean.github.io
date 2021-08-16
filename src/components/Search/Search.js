@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ApiService from '../../api/api-service';
+import Giphy from '../Giphy/Giphy';
 
 export default class Search extends Component {
 
     state = {
         search: '',
-        data: {}
+        results: [],
+        err: false
     }
 
     handleChange = ev => {
@@ -14,12 +16,25 @@ export default class Search extends Component {
 
     handleSearch = ev => {
         ev.preventDefault()
-        // const { search } = ev.target
-        // this.setState({ search: search.value })
+        if(this.state.search.length === 0) {
+            this.setState({ err: true })
+        }
         ApiService.searchGif(this.state.search)
             .then(res => {
-                this.setState({ data: res })
+                this.setState({ results: res.data, search: '' }, () => {
+                    console.log(`IDENTIFICATION: ${this.state.results[0]}`)
+                })
             })
+    }
+
+    renderGifs() {
+        const gifs = this.state.results
+        return gifs.map(gif =>
+            <Giphy 
+                key={gif.id}
+                url={gif.images.fixed_height.webp}
+            />
+            )
     }
 
 
@@ -39,6 +54,9 @@ export default class Search extends Component {
                         Search
                     </button>
                 </form>
+                <>
+                {this.state.results.length > 0 ? this.renderGifs() : 'Hello'}
+                </>
             </div>
         )
     }
