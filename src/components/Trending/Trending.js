@@ -1,19 +1,40 @@
 import React, { Component } from "react";
 import ApiService from "../../api/api-service";
+import Gifs from './Gifs'
 
 export default class Trending extends Component {
-    componentDidMount(){
+
+    state = {
+        results: []
+    }
+    componentDidMount() {
         ApiService.getTrending()
             .then(res => {
-                console.log(res.data)
+                this.setState({ results: res.data })
                 console.log("META", res.meta)
             })
     }
 
+    renderTrending() {
+        const gifs = this.state.results
+        return gifs.map(gif =>
+            <Gifs
+                key={gif.id}
+                img={gif.images.fixed_width.webp}
+            />
+        )
+
+    }
+
+    renderLoading() {
+        return <div> LOADING </div>
+    }
+
     render() {
-        return(
+        return (
+
             <div className='trending'>
-                TRENDING
+                {this.state.results.length > 0 ? this.renderTrending() : this.renderLoading()}
             </div>
         )
     }

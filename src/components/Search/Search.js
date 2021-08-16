@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ApiService from '../../api/api-service';
 import Giphy from '../Giphy/Giphy';
 
@@ -21,9 +22,7 @@ export default class Search extends Component {
         }
         ApiService.searchGif(this.state.search)
             .then(res => {
-                this.setState({ results: res.data, search: '' }, () => {
-                    console.log(`IDENTIFICATION: ${this.state.results[0]}`)
-                })
+                this.setState({ results: res.data, search: '' })
             })
     }
 
@@ -32,7 +31,7 @@ export default class Search extends Component {
         return gifs.map(gif =>
             <Giphy 
                 key={gif.id}
-                url={gif.images.fixed_height.webp}
+                url={gif.images.fixed_width.webp}
             />
             )
     }
@@ -48,14 +47,14 @@ export default class Search extends Component {
                         type='text'
                         value={this.state.search}
                         onChange={this.handleChange}
-                        // name='search'
                     />
                     <button type='submit' onClick={this.handleSearch}>
                         Search
                     </button>
                 </form>
+                <Link to='/trending'>Trending</Link>
                 <>
-                {this.state.results.length > 0 ? this.renderGifs() : 'Hello'}
+                {this.state.results.length > 0 ? this.renderGifs() : 'Random Gifs Here'}
                 </>
             </div>
         )
