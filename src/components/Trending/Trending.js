@@ -11,7 +11,6 @@ export default class Trending extends Component {
         ApiService.getTrending()
             .then(res => {
                 this.setState({ results: res.data })
-                console.log("META", res.meta)
             })
     }
 
