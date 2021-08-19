@@ -26,6 +26,7 @@ export default class Trending extends Component {
             <Gifs
                 key={gif.id}
                 img={gif.images.fixed_width.webp}
+                id={gif.id}
             />
         )
 

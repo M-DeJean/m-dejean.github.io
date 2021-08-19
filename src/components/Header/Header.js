@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Link, withRouter } from 'react-router-dom'
 import ApiService from '../../api/api-service'
 import GiphyContext from '../../context/GiphyContext'
-import Giphy from '../Giphy/Giphy'
+import Search from '../Search/Search'
 
 class Header extends Component{
 
@@ -21,9 +21,9 @@ class Header extends Component{
     handleSearch = ev => {
         ev.preventDefault()
         let _data
-        if(this.state.search.length === 0) {
-            this.setState({ err: true })
-        }
+        // if(this.state.search.length === 0) {
+        //     this.setState({ err: true })
+        // }
         ApiService.searchGif(this.state.search)
             .then(res => {
                 _data = res.data 
@@ -56,15 +56,17 @@ class Header extends Component{
     render(){
         return(
             <div className='search'>
-                <form>
+                <form onSubmit={this.handleSearch}>
                     <h1>Search</h1>
                     <p>Search for a GIF</p>
                     <input className='search-bar'
+                        placeholder='Search for a Gif'
                         type='text'
                         value={this.state.search}
                         onChange={this.handleChange}
+                        required
                     />
-                    <button type='submit' onClick={this.handleSearch}>
+                    <button type='submit'>
                         Search
                     </button>
                 </form>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header'
-import Giphy from '../Giphy/Giphy';
+import Search from '../Search/Search';
 import Trending from '../Trending/Trending';
-import Details from '../Giphy/Details'
+import Details from '../Details/Details'
 import { Route } from 'react-router-dom';
 export default class App extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class App extends Component {
         <Route
           exact 
           path={'/search'}
-          component={Giphy}
+          component={Search}
         />
         <Route 
           exact

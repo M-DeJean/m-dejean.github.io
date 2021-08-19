@@ -1,67 +1,107 @@
-import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
-import ApiService from '../../api/api-service';
-import Giphy from '../Giphy/Giphy';
-
+import React, { Component } from 'react'
+import { Link, Route, withRouter } from 'react-router-dom'
+import GiphyContext from '../../context/GiphyContext'
+import Gifs from './Gifs'
 export default class Search extends Component {
 
+    static contextType = GiphyContext
+
     state = {
-        search: '',
-        results: [],
-        err: false
+        data: [],
+        details: false
     }
 
-    handleChange = ev => {
-        this.setState({ search: ev.target.value })
+    // componentDidMount() {
+    //     const data = this.props.location.state.props
+    //     this.setState({ data })
+    // }
+
+    setData = (e) => {
+        const id = e.target.getAttribute('data-id')
+        let _details
+        // this.setState({ loading: true })
+        const { data } = this.context
+        // const id = this.props.match.params.id
+        const gif = data.filter(gif => gif.id === id)
+        const details = gif[0]
+        this.context.setDetails(_details)
+        // this.setState({ gif: details })
+        // this.setState({ loading: false })
+
     }
 
-    handleSearch = ev => {
-        ev.preventDefault()
-        if(this.state.search.length === 0) {
-            this.setState({ err: true })
-        }
-        ApiService.searchGif(this.state.search)
-            .then(res => {
-                this.setState({ results: res.data, search: '' })
-            })
-    }
-
-    renderGifs() {
-        const gifs = this.state.results
-        return gifs.map(gif =>
-            <Route exact path={'/search'}>
-                <Giphy 
-                data={gif}
-                key={gif.id}
-                id={gif.id}
-                url={gif.images.fixed_width.webp}
+    renderGiphs() {
+        const { data } = this.context
+        console.log('DATA:    ', data)
+        return data.map(data =>
+            <Gifs 
+                key={data.id}
+                img={data.images.fixed_width.webp}
+                id={data.id}
             />
-            </Route>
-            
-            )
+            // <li className='giphy' key={data.id}>
+            //     <Link
+            //     onClick={ (e) => console.log(e.target.getAttribute('data-id'))}
+            //     to={`search/${data.id}`}
+            //     // onClick={this.handleClick}
+            // >
+            //     {/* <a href={`/${this.props.id}`}> */}
+            //     <img
+            //         data-id={data.id}
+            //         // onClick={this.handleClick}
+            //         src={data.images.fixed_width.webp}
+            //         alt=''
+            //     />
+            //     {/* </a> */}
+            //     </Link>
+            // </li>
+        )
+
     }
 
+    // renderDetails() {
+    //     const data = this.state.data
+    //     return <Route
+    //         exact
+    //         path={'/:url/:id'}
+    //         render={(props) => 
+    //             <Details 
+    //                 data='hello'
+    //                 {...props}
+    //             />
+    //         }
 
+    //     />
+
+
+    // }
+
+    handleClick = e => {
+        e.preventDefault()
+        // const id = e.currentTarget.getAttribute('data-id')
+        // this.props.history.push({ pathname: `search/${id}` })
+        this.renderDetails()
+    }
     render() {
-        return(
-            <div className='search'>
-                <form>
-                    <h1>Search</h1>
-                    <p>Search for a GIF</p>
-                    <input className='search-bar'
-                        type='text'
-                        value={this.state.search}
-                        onChange={this.handleChange}
-                    />
-                    <button type='submit' onClick={this.handleSearch}>
-                        Search
-                    </button>
-                </form>
-                <Link to='/trending'>Trending</Link>
-                <>
-                {this.state.results.length > 0 ? this.renderGifs() : 'Random Gifs Here'}
-                </>
-            </div>
+        // const url = this.props.location.state.props.url
+        // const url = this.props.location.state.props.images.fixed_width.webp
+        // const id = this.props.location.state.props.id
+        return (
+            this.renderGiphs()
+            // <div className='giphy'>
+            //     {/* <Link
+            //         to={`/${id}`}
+            //         onClick={this.handleClick}
+            //     > */}
+            //     {/* <a href={`/${this.props.id}`}> */}
+            //     <img
+            //         onClick={this.handleClick}
+            //         src={url}
+            //         alt=''
+            //     />
+            //     {/* </a> */}
+            //     {/* </Link> */}
+            // </div>
         )
     }
 }
