@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 
 const GiphyContext = React.createContext({
     data: [],
+    details: {},
     setError: () => { },
     clearError: () => { },
-    setData: () => { }
+    setData: () => { },
+    setDetails: () => { }
 })
 
 export default GiphyContext
@@ -12,6 +14,7 @@ export default GiphyContext
 export class GiphyProvider extends Component {
     state = {
         data: [],
+        details: [],
         error: null
     };
 
@@ -28,13 +31,19 @@ export class GiphyProvider extends Component {
         this.setState({ data })
     }
 
+    setDetails = details => {
+        this.setState({ details })
+    }
+
     render(){
         const value = {
             data: this.state.data,
+            details: this.state.details,
             error: this.state.error,
             setError: this.setError,
             clearError: this.clearError,
-            setData: this.setData
+            setData: this.setData,
+            setDetails: this.setDetails
         }
         return(
             <GiphyContext.Provider value={value}>

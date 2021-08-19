@@ -11,9 +11,23 @@ class Giphy extends Component {
         details: false
     }
 
-    componentDidMount() {
-        const data = this.props.location.state.props
-        this.setState({ data })
+    // componentDidMount() {
+    //     const data = this.props.location.state.props
+    //     this.setState({ data })
+    // }
+
+    setData = (e) => {
+        const id = e.target.getAttribute('data-id')
+        let _details
+        // this.setState({ loading: true })
+        const { data } = this.context
+        // const id = this.props.match.params.id
+        const gif = data.filter(gif => gif.id === id)
+        const details = gif[0]
+        this.context.setDetails(_details)
+        // this.setState({ gif: details })
+        // this.setState({ loading: false })
+
     }
 
     renderGiphs() {
@@ -22,6 +36,7 @@ class Giphy extends Component {
         return data.map(data =>
             <li className='giphy' key={data.id}>
                 <Link
+                onClick={ (e) => console.log(e.target.getAttribute('data-id'))}
                 to={`search/${data.id}`}
                 // onClick={this.handleClick}
             >
@@ -63,9 +78,9 @@ class Giphy extends Component {
         this.renderDetails()
     }
     render() {
-        const url = this.props.location.state.props.url
+        // const url = this.props.location.state.props.url
         // const url = this.props.location.state.props.images.fixed_width.webp
-        const id = this.props.location.state.props.id
+        // const id = this.props.location.state.props.id
         return (
             this.renderGiphs()
             // <div className='giphy'>

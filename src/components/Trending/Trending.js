@@ -1,22 +1,28 @@
 import React, { Component } from "react";
 import ApiService from "../../api/api-service";
+import GiphyContext from "../../context/GiphyContext";
 import Gifs from './Gifs'
 
 export default class Trending extends Component {
+
+    static contextType = GiphyContext
 
     state = {
         results: []
     }
     componentDidMount() {
+        let _data
         ApiService.getTrending()
             .then(res => {
-                this.setState({ results: res.data })
+                _data = res.data
+                this.context.setData(_data)
+                // this.setState({ results: res.data })
             })
     }
 
     renderTrending() {
-        const gifs = this.state.results
-        return gifs.map(gif =>
+        const data = this.context.data
+        return data.map(gif =>
             <Gifs
                 key={gif.id}
                 img={gif.images.fixed_width.webp}
@@ -33,7 +39,7 @@ export default class Trending extends Component {
         return (
 
             <div className='trending'>
-                {this.state.results.length > 0 ? this.renderTrending() : this.renderLoading()}
+                {this.context.data.length ? this.renderTrending() : this.renderLoading()}
             </div>
         )
     }
