@@ -1,0 +1,50 @@
+.header{
+    position:relative;
+}
+
+.inner-header{
+    text-align: center;
+}
+
+.title{
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    color:white;
+    font-weight: 900;
+}
+
+.header form{
+    display:inline-block;
+    width: 80%;
+}
+
+form{
+    padding: 0px 5px;
+}
+
+form .search-bar{
+    font-size: large;
+    position: relative;
+    height: 52px;
+    width: 90%;
+    text-align: left;
+    padding-left: 6px;
+}
+
+.header a{
+    text-align: center;
+    color: skyblue;
+    text-decoration: none;
+}
+
+form button{
+    font-size: medium;
+    cursor: pointer;
+    width: 70px;
+    font-weight: 900;
+    height: 58px;
+    color: white;
+    background-color: darkslateblue;
+    border-style: none;
+}

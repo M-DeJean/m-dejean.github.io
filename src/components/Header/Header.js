@@ -5,7 +5,7 @@ import GiphyContext from '../../context/GiphyContext'
 import "./Header.css"
 import Search from '../Search/Search'
 
-class Header extends Component{
+class Header extends Component {
 
     static contextType = GiphyContext
 
@@ -27,7 +27,7 @@ class Header extends Component{
         // }
         ApiService.searchGif(this.state.search)
             .then(res => {
-                _data = res.data 
+                _data = res.data
                 this.setState({ results: _data, search: '' })
                 this.context.setData(_data)
             })
@@ -49,19 +49,23 @@ class Header extends Component{
     //             url={gif.images.fixed_width.webp}
     //         />
     //         </Route>
-            
+
     //         )
     // }
 
 
-    render(){
-        return(
-            <div className='search'>
+    render() {
+        return (
+            <div className='header'>
+                <div className='inner-header'>
+                <Link to='/'>
+                    <h1 className='title'>
+                        GIPHY
+                    </h1>
+                </Link>
                 <form onSubmit={this.handleSearch}>
-                    <h1>Search</h1>
-                    <p>Search for a GIF</p>
                     <input className='search-bar'
-                        placeholder='Search for a Gif'
+                        placeholder='Search all the GIFs'
                         type='text'
                         value={this.state.search}
                         onChange={this.handleChange}
@@ -75,6 +79,7 @@ class Header extends Component{
                 {/* <>
                 {this.state.results.length > 0 ? this.renderGifs() : 'Random Gifs Here'}
                 </> */}
+                </div>
             </div>
         )
     }
