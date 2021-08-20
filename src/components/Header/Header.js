@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Link, withRouter } from 'react-router-dom'
 import ApiService from '../../api/api-service'
 import GiphyContext from '../../context/GiphyContext'
+import "./Header.css"
 import Search from '../Search/Search'
 
 class Header extends Component{

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './Gifs.css'
 import GiphyContext from '../../context/GiphyContext'
 
 export default class Gifs extends Component {

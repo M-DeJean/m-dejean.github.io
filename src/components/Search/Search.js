@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Route, withRouter } from 'react-router-dom'
 import GiphyContext from '../../context/GiphyContext'
+import './Search.css'
 import Gifs from './Gifs'
 export default class Search extends Component {
 

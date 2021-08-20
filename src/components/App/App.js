@@ -4,6 +4,7 @@ import Search from '../Search/Search';
 import Trending from '../Trending/Trending';
 import Details from '../Details/Details'
 import { Route } from 'react-router-dom';
+import './App.css'
 export default class App extends Component {
   render() {
     return (

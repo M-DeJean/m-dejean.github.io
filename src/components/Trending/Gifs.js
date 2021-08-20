@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import '../Search/Gifs.css'
 
 export default class Gifs extends Component{
     render() {

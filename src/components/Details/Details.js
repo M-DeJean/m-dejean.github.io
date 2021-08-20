@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GiphyContext from '../../context/GiphyContext';
+import './Details.css'
 import Giphy from '../Search/Search';
 
 export default class Details extends Component {
