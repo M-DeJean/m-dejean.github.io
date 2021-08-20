@@ -8,16 +8,12 @@ export default class Trending extends Component {
 
     static contextType = GiphyContext
 
-    state = {
-        results: []
-    }
     componentDidMount() {
         let _data
         ApiService.getTrending()
             .then(res => {
                 _data = res.data
                 this.context.setData(_data)
-                // this.setState({ results: res.data })
             })
     }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Search.css'
-import GiphyContext from '../../context/GiphyContext'
 
 export default class Gifs extends Component {
     render() {
@@ -10,18 +9,13 @@ export default class Gifs extends Component {
         return(
             <div className='gif'>
                  <Link
-                onClick={ (e) => console.log(e.target.getAttribute('data-id'))}
                 to={`search/${id}`}
-                // onClick={this.handleClick}
             >
-                {/* <a href={`/${this.props.id}`}> */}
                 <img
                     data-id={id}
-                    // onClick={this.handleClick}
                     src={url}
                     alt=''
                 />
-                {/* </a> */}
                 </Link>
             </div>
         )
