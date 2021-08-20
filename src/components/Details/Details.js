@@ -55,7 +55,7 @@ export default class Details extends Component {
                                 target='_blank'
                                 rel="noopener noreferrer"
                             >
-                                {details[0].user ? details[0].user.display_name || details[0].user.username : ''}
+                                {details[0].user ? details[0].user.display_name || details[0].user.username : 'No User Data'}
                             </a>
                         </div>
                         <div className='detailed-gif'>
