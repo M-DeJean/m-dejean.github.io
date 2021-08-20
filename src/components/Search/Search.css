@@ -1,0 +1,14 @@
+.gif-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.gif{
+    padding: 4px;
+}
+
+.gif img{
+    border-radius: 5px;
+}

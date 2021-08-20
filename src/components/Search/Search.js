@@ -88,7 +88,9 @@ export default class Search extends Component {
         // const url = this.props.location.state.props.images.fixed_width.webp
         // const id = this.props.location.state.props.id
         return (
-            this.renderGiphs()
+            <div className='gif-list'>
+                {this.renderGiphs()}
+            </div>
             // <div className='giphy'>
             //     {/* <Link
             //         to={`/${id}`}

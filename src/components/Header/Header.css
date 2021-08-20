@@ -1,5 +1,6 @@
 .header{
     position:relative;
+    margin-top: 15px;
 }
 
 .inner-header{
@@ -36,6 +37,7 @@ form .search-bar{
     text-align: center;
     color: skyblue;
     text-decoration: none;
+    font-weight: 800;
 }
 
 form button{
@@ -47,4 +49,8 @@ form button{
     color: white;
     background-color: darkslateblue;
     border-style: none;
+}
+
+form button:active{
+    background-color: skyblue;
 }

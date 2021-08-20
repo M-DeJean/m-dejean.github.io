@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import '../Search/Gifs.css'
 
 export default class Gifs extends Component{
     render() {
@@ -13,7 +12,7 @@ export default class Gifs extends Component{
             //     alt=''
             //    /> 
             // </div>
-            <div>
+            <div className='gif'>
                  <Link
                 onClick={ (e) => console.log(e.target.getAttribute('data-id'))}
                 to={`search/${id}`}

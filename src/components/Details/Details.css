@@ -1,0 +1,66 @@
+.details{
+    position:relative;
+    height: 600px;
+}
+
+.details a{
+    color: white;
+    text-decoration: none;
+}
+
+.details a:hover{
+    color: skyblue;
+}
+
+.info{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.user{
+    width: 100px;
+}
+
+.user img{
+    height: 50px;
+    width: 50px;
+}
+
+.user a{
+    float: right;
+    font-size: small;
+    font-weight: 900;
+}
+
+.detailed-gif{
+    height:500px;
+    width:500px;
+}
+
+.detailed-gif h2{
+    text-align: center;
+}
+
+.copy{
+    cursor: pointer;
+    background-color: darkslateblue;
+    height: 40px;
+    width: 245px;
+    margin: 0 auto;
+    padding-top: 20px;
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+.copy:active{
+    background-color: skyblue;
+}
+
+.gif-data{
+    float: right;
+    font-size: small;
+    font-weight: 900;
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ApiService from "../../api/api-service";
 import GiphyContext from "../../context/GiphyContext";
 import Gifs from './Gifs'
+import '../Search/Search.css'
 
 export default class Trending extends Component {
 
@@ -39,7 +40,7 @@ export default class Trending extends Component {
     render() {
         return (
 
-            <div className='trending'>
+            <div className='gif-list'>
                 {this.context.data.length ? this.renderTrending() : this.renderLoading()}
             </div>
         )
